@@ -5,13 +5,13 @@
  }
 
  @font-face {
-  font-family: "Matter Medium";
+  font-family: "Matter";
   src: url("/fonts/Matter-Medium.otf");
   font-weight: 500;
  }
 
  @font-face {
-  font-family: "Matter SemiBold";
+  font-family: "Matter";
   src: url("/fonts/Matter-SemiBold.otf");
   font-style: bold;
   font-weight: 600;

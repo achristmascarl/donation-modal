@@ -60,10 +60,30 @@
   height: 50px;
   border-radius: 5px;
   background-color: rgba(0, 71, 123, 0.1);
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px 0 12px;
 }
 
 .boostButtons{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.editDonation {
+  font-size: 16px;
+}
+
+.editDonation:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }

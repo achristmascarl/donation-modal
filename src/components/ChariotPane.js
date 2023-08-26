@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import styles from "./ChariotPane.module.css"
 import CloseIcon from "@/svg/CloseIcon";
 
 export default function ChariotPane() {
   const [donationAmount, setDonationAmount] = useState(1000);
+  const [editingDonation, setEditingDonation] = useState(false);
+
+  const donationInputRef = useRef(null);
+  const focusDonationInput = () => donationInputRef?.current?.focus();
+
+  function getDonationString() {
+    return `$${donationAmount}`;
+  }
+
+  function handleDonationUpdate(e) {
+    setDonationAmount(e);
+  }
 
   return (
     <div className={styles.container}>
@@ -39,7 +51,29 @@ export default function ChariotPane() {
       </div>
       <div className={styles.donationWrapper}>
         <span>Boost your donation!</span>
-        <div className={styles.donationInput}>{donationAmount}</div>
+        <input
+          value={getDonationString()}
+          className={styles.donationInput + " " + (editingDonation ? "" : styles.hidden)}
+          onChange={(e) => handleDonationUpdate(e.target.value)}
+          ref={donationInputRef}
+          onBlur={() => setEditingDonation(false)}
+        ></input>
+        <div
+          className={styles.donationInput + " " + (editingDonation ? styles.hidden : "")}
+        >
+          <span>
+            {getDonationString()}
+          </span>
+          <span
+            className={styles.editDonation}
+            onClick={() => {
+              setEditingDonation(true);
+              focusDonationInput();
+            }}
+          >
+              Edit
+          </span>
+        </div>
         <div className={styles.boostButtons}>test</div>
       </div>
     </div>
