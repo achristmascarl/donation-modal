@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ChariotPane.module.css"
 import CloseIcon from "@/svg/CloseIcon";
+import HeartIcon from "@/svg/HeartIcon";
 
 export default function ChariotPane() {
   const [donationAmount, setDonationAmount] = useState(3500);
@@ -10,20 +11,34 @@ export default function ChariotPane() {
   const donationInputRef = useRef(null);
   const focusDonationInput = () => donationInputRef?.current?.focus();
 
+  const currencyFormat = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
   useEffect(() => {
     if (editingDonation) {
       focusDonationInput();
+      donationInputRef.current.selectionStart = donationInputRef.current.value.length;
+      donationInputRef.current.selectionEnd = donationInputRef.current.value.length;
     }
   }, [editingDonation]);
 
   function getDonationString() {
-    return `$${donationAmount}`;
+    return currencyFormat.format(donationAmount);
   }
 
   function handleDonationUpdate(value) {
-    if (/^[0-9]*$/.test(value)) {
-      setDonationAmount(value);
+    const parsedValue = parseInt(value);
+    if (/^[0-9]*$/.test(parsedValue)) {
+      setDonationAmount(parsedValue);
     }
+  }
+
+  function handleDonationBoost(multiplier) {
+    setDonationAmount(parseInt(donationAmount * multiplier));
   }
 
   return (
@@ -68,6 +83,7 @@ export default function ChariotPane() {
         ></input>
         <div
           className={styles.donationInput + " " + (editingDonation ? styles.hidden : "")}
+          onClick={() => setEditingDonation(true)}
         >
           <span>
             {getDonationString()}
@@ -79,7 +95,30 @@ export default function ChariotPane() {
               Edit
           </span>
         </div>
-        <div className={styles.boostButtons}>test</div>
+        <div className={styles.boostButtons}>
+          <div
+            className={styles.percentageBoost}
+            onClick={() => handleDonationBoost(1.15)}
+          >
+            +15%
+          </div>
+          <div
+            className={styles.percentageBoost}
+            onClick={() => handleDonationBoost(1.25)}
+          >
+            +25%
+          </div>
+          <div
+            className={styles.doubleBoost}
+            onClick={() => handleDonationBoost(2)}
+          >
+            <HeartIcon height={13} width={15}/>
+            Double it!
+          </div>
+        </div>
+      </div>
+      <div className={styles.bottomContainer}>
+        <div className={styles.submitButton}>Submit</div>
       </div>
     </div>
   );

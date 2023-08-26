@@ -67,16 +67,13 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 18px 0 12px;
+  cursor: text;
 }
 
 .donationInput:focus {
   box-sizing: border-box;
-}
-
-.boostButtons{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  color:#00477B;
+  padding-left: 10px;
 }
 
 .editDonation {
@@ -90,4 +87,78 @@
 
 .hidden {
   display: none;
+}
+
+.boostButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 9px;
+}
+
+.percentageBoost {
+  font-size: 16px;
+  font-weight: 500;
+  height: 35px;
+  width: 67px;
+  text-align: center;
+  background-color: rgba(0, 71, 123, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.percentageBoost:hover {
+  background-color: rgba(0, 71, 123, 0.3);
+}
+
+.doubleBoost {
+  font-size: 16px;
+  height: 35px;
+  background-color: #00477B;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 96px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 19px 0 19px;
+  transition: all 0.2s ease;
+}
+
+.doubleBoost:hover {
+  background-color: #00355a;
+}
+
+.flexSpacer {
+  flex-grow: 1;
+}
+
+.bottomContainer {
+  margin-top: auto;
+}
+
+.submitButton {
+  height: 58px;
+  background-color: #00477B;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #00355a;
 }
