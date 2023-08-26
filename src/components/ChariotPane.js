@@ -119,6 +119,7 @@ export default function ChariotPane() {
       </div>
       <div className={styles.bottomContainer}>
         <div className={styles.submitButton}>Submit</div>
+        <span className={styles.tos}>By clicking “Continue”, you certify that you have read & understood Donor Advised Fund Terms of Service</span>
       </div>
     </div>
   );
