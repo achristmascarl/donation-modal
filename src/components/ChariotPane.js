@@ -1,21 +1,29 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ChariotPane.module.css"
 import CloseIcon from "@/svg/CloseIcon";
 
 export default function ChariotPane() {
-  const [donationAmount, setDonationAmount] = useState(1000);
+  const [donationAmount, setDonationAmount] = useState(3500);
   const [editingDonation, setEditingDonation] = useState(false);
 
   const donationInputRef = useRef(null);
   const focusDonationInput = () => donationInputRef?.current?.focus();
 
+  useEffect(() => {
+    if (editingDonation) {
+      focusDonationInput();
+    }
+  }, [editingDonation]);
+
   function getDonationString() {
     return `$${donationAmount}`;
   }
 
-  function handleDonationUpdate(e) {
-    setDonationAmount(e);
+  function handleDonationUpdate(value) {
+    if (/^[0-9]*$/.test(value)) {
+      setDonationAmount(value);
+    }
   }
 
   return (
@@ -52,7 +60,7 @@ export default function ChariotPane() {
       <div className={styles.donationWrapper}>
         <span>Boost your donation!</span>
         <input
-          value={getDonationString()}
+          value={donationAmount}
           className={styles.donationInput + " " + (editingDonation ? "" : styles.hidden)}
           onChange={(e) => handleDonationUpdate(e.target.value)}
           ref={donationInputRef}
@@ -66,10 +74,7 @@ export default function ChariotPane() {
           </span>
           <span
             className={styles.editDonation}
-            onClick={() => {
-              setEditingDonation(true);
-              focusDonationInput();
-            }}
+            onClick={() => setEditingDonation(true)}
           >
               Edit
           </span>
