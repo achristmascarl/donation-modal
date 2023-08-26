@@ -1,0 +1,69 @@
+.container {
+  width: 276px;
+  height: 532px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 37px;
+}
+
+.chariotLogo {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  
+}
+
+.closeIconWrapper {
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  cursor: pointer;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.arrowIcon {
+  margin-left: -10px;
+}
+
+.fundContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  border-radius: 5px;
+  background-color: #00477B;
+  height: 45px;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 0 18px 0 18px;
+}
+
+.donationWrapper {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: #00477B;
+}
+
+.donationInput {
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgba(0, 71, 123, 0.1);
+}
+
+.boostButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

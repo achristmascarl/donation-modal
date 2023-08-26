@@ -3,16 +3,24 @@
   src: url("/fonts/Matter-Regular.otf");
   font-style: normal;
  }
+
  @font-face {
-  font-family: "Matter";
-  src: url("/fonts/Matter-SemiBold.otf");
-  font-style: bold;
- }
- @font-face {
-  font-family: "Matter";
+  font-family: "Matter Medium";
   src: url("/fonts/Matter-Medium.otf");
+  font-weight: 500;
  }
 
- * {
-  font-family: "Matter";
+ @font-face {
+  font-family: "Matter SemiBold";
+  src: url("/fonts/Matter-SemiBold.otf");
+  font-style: bold;
+  font-weight: 600;
  }
+
+* {
+  font-family: "Matter";
+}
+
+body {
+  background-color: #F5F5F5;
+}
